@@ -1,32 +1,33 @@
 <div align="center">
 
+![AniMaze Logo](public/mainlogo.png)
+
 # AniMaze 🎌✨  
-### Next-Gen Anime & Manga Platform for Bangladesh 🇧🇩  
-**ANIME. MANGA. INNOVATION.** — *Built for otakus, by otakus.*
+### Bangladesh's First AI-Powered Anime & Manga Platform  
+**ANIME. MANGA. INNOVATION.** — *Built for otakus, by otakus.*  
+
+[![Vite](https://img.shields.io/badge/Vite-React-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 
 <p>
-  <a href="#features">Features</a> •
-  <a href="#tech-stack">Tech Stack</a> •
-  <a href="#project-structure">Project Structure</a> •
-  <a href="#getting-started">Getting Started</a> •
-  <a href="#backend-api">Backend API</a> •
-  <a href="#architecture">Architecture</a>
+  <a href="#-the-problem-we-solve">Problem</a> •
+  <a href="#-what-makes-animaze-different">What's Different</a> •
+  <a href="#-features">Features</a> •
+  <a href="#-tech-stack">Tech Stack</a> •
+  <a href="#-getting-started">Getting Started</a> •
+  <a href="#-project-structure">Structure</a> •
+  <a href="#-api-documentation">API Docs</a> •
+  <a href="#-testing">Testing</a> •
+  <a href="#-team">Team</a>
 </p>
 
-<!-- Add later if deployed -->
-<!-- 🌐 Live Demo: https://your-demo-link -->
-<!-- 🎥 Preview Video: https://your-video-link -->
-
-![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?logo=vite&logoColor=white)
-![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-06B6D4?logo=tailwindcss&logoColor=white)
-![Express](https://img.shields.io/badge/Express-API-000000?logo=express&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-DB-003B57?logo=sqlite&logoColor=white)
-![License](https://img.shields.io/badge/License-TBD-green)
+---
 
 </div>
-
 ---
 
 ## Overview
@@ -93,154 +94,332 @@
   - `express-validator`
 
 ---
+## 🎯 The Problem We Solve
 
-## Project Structure
+### Why AniMaze Exists
+
+Bangladeshi anime fans face **four critical barriers** that AniMaze was built to eliminate:
+
+#### 💸 **Affordability Crisis**
+- **International subscriptions are unrealistic:** Crunchyroll Premium ($12/mo = ৳1,400), Netflix Anime ($17/mo = ৳2,000), Funimation ($8/mo = ৳950) — these prices don't work for most Bangladeshi students and fans
+- **AniMaze solution:** Starting at **৳50/month** with the revolutionary option to **earn premium access through engagement** (quizzes, reviews, XP accumulation) — **60-80% cheaper** than competitors
+
+#### 🔒 **Access Fragmentation**
+- Fans juggle 5-10 different sites for anime, manga, news, and community — no unified experience
+- **AniMaze solution:** Single hub for anime streaming, manga reading, PDF collections, AI quizzes, news aggregation, and community features
+
+#### 🌐 **Localization Gap**
+- Global platforms lack Bangla interfaces, local payment methods, and BDT pricing
+- **AniMaze solution:** Full **Bangla/English UI**, integrated **bKash, Nagad, Rocket, Upay** payments, culturally relevant community features
+
+#### 🏴‍☠️ **Piracy Pressure**
+- When legal options are expensive and inconvenient, piracy becomes the default
+- **AniMaze solution:** Provides a **legal, high-quality alternative** that's genuinely affordable and accessible, making piracy unnecessary
+
+---
+
+## 🌟 What Makes AniMaze Different
+
+### 🇧🇩 **Bangladesh-First Design Philosophy**
+
+AniMaze isn't a "global platform localized for Bangladesh" — it's **built from the ground up for Bangladeshi otakus**.
+
+#### 🎮 **Hybrid Monetization Revolution**
+```
+Traditional Model:          AniMaze Model:
+Pay ৳1,500/month    →      ৳50-1,500/month OR earn through engagement
+No alternatives     →      Premium access via XP redemption
+                           Quiz participation = Badge unlocking
+                           Community engagement = Free premium
+```
+
+**Four Badge Tiers:**
+- 🥉 **Bronze Guardian:** ৳200/month or 7,000 XP
+- 🥈 **Silver Champion:** ৳500/3 months or 12,500 XP *(Most Popular)*
+- 🥇 **Gold Master:** ৳1,000/6 months or 25,000 XP
+- 💎 **Diamond Legend:** ৳1,500/year — Premium tier
+
+#### 🤖 **AI-Powered Intelligence**
+
+**DeepSeek R1 Integration** powers:
+- **Dynamic Quiz Generation:** Real-time question creation across hundreds of anime/manga series
+- **Adaptive Difficulty:** Questions adjust to user performance (Easy → Medium → Hard)
+- **7 Question Types:** MCQ, True/False, Typing, Image Recognition, Fill-in-the-blank, Sequencing, Character Matching
+- **Educational Approach:** Each answer includes detailed explanations
+- **Quality Controls:** Prompt engineering + validation layers + user feedback loops
+
+#### 📚 **Multi-API Content Aggregation**
+
+**Zero copyright hosting** — all content pulled through licensed APIs:
+- **AniList GraphQL** — Comprehensive anime metadata
+- **MangaDex** — Manga chapters and reading progress
+- **Jikan** — MyAnimeList data integration
+- **Consumet** — Streaming links and episode tracking
+- **Anime News Network + Crunchyroll News** — Industry updates
+
+**Why this matters:** Legal compliance + broad catalog + automatic updates
+
+#### 🔍 **Smart Discovery Engine**
+
+**Typo-Tolerant Search:**
+```javascript
+Search: "narot"      →  Finds: "Naruto"
+Search: "atack tita" →  Finds: "Attack on Titan"
+Search: "one pice"   →  Finds: "One Piece"
+```
+
+**Powered by Fuse.js fuzzy logic** with multi-filter panels (genre, year, studio, author, status, rating)
+
+#### 👥 **Three-Role Architecture**
+
+| Role | Capabilities | Purpose |
+|------|--------------|---------|
+| **Viewer** | Watch anime, read manga, take quizzes, earn XP, manage watchlist/bookmarks | Core user experience |
+| **Critic** | Submit reviews/vlogs with rich-text editor, track approval status, view engagement analytics | Community content creation |
+| **Admin** | Moderate content, manage users, configure XP/badges, view revenue analytics, system oversight | Platform management |
+
+---
+
+## ✨ Features
+
+### 🎬 **Anime Streaming**
 
 <details>
-<summary>Click to expand</summary>
+<summary><b>Core Capabilities</b></summary>
 
-```text
-bangla-anime-verse-main-xxx/
-├── backend/
-│   ├── package.json
-│   ├── package-lock.json
-│   ├── quiz.db
-│   └── server.js
-├── public/
-│   ├── avatars/
-│   ├── pdf cover/
-│   ├── Attack-on-Titan-CH-001.pdf
-│   ├── Dragon-Ball-1.pdf
-│   ├── F.mp4
-│   └── ...
-├── src/
-│   ├── __tests__/subscription.test.ts
-│   ├── components/
-│   ├── contexts/
-│   ├── lib/
-│   ├── pages/
-│   ├── routes/
-│   ├── services/
-│   ├── styles/
-│   ├── types/
-│   ├── utils/
-│   ├── App.tsx
-│   ├── main.tsx
-│   └── ...
-├── package.json
-└── vite.config.ts
+- **Cinematic Hero Section** — Dynamic trending anime showcase with trailers
+- **Smart Search + Filters** — Typo-tolerant discovery with genre/year/studio/status filters
+- **Resume Playback** — Continue watching from last position across devices
+- **Adaptive Quality** — 360p, 480p, 720p, 1080p streaming
+- **Watchlist Management** — Save favorites, track episodes, rate content
+- **Episode Tracking** — Automatic progress synchronization
+
 </details>
-Frontend Routes
-These are wired in src/App.tsx:
 
-Public
-/ Home
+### 📖 **Manga Reading**
 
-/anime + /anime/:id
+<details>
+<summary><b>Reading Experience</b></summary>
 
-/manga + /manga/:id
+- **Featured Collage Hero** — Trending manga discovery
+- **Semantic Search** — AI-powered search with typo tolerance
+- **Multi-Filter Panel** — Author, type, genre, year filtering
+- **Progress Tracker** — Automatic reading progress across devices
+- **Chapter Bookmarking** — Save favorite pages and chapters
+- **PDF Collection** — Offline manga library (Attack on Titan, Dragon Ball, Bleach)
+  - 4 Total Titles | 627 Pages | 91.7 MB | ★8.6 Average Rating
 
-/pdf-manga
+</details>
 
-/quiz + /quiz/:id + /quiz/:id/results
+### 🧠 **AI Quiz System**
 
-/leaderboard
+<details>
+<summary><b>Gamification Engine</b></summary>
 
-/news + /news/:id
+**Quiz Generation:**
+- **AI-Powered Questions** via DeepSeek R1 API
+- **7 Question Types:** MCQ, True/False, Typing, Image-based, Fill-in-blank, Sequencing, Character Matching
+- **Adaptive Difficulty:** Questions adjust to performance
+- **Timed Challenges:** 30s (Easy), 45s (Medium), 60s (Hard) per question
 
-/about
+**XP & Progression:**
+- **Earn 20-200 XP** per quiz (difficulty-based)
+- **Bonus XP:** +50 for perfect scores
+- **Global Leaderboard** with medal rankings (🥉🥈🥇💎)
+- **XP Redemption:** Convert XP to badge tiers
 
-/reviews
+**Quality Features:**
+- Detailed explanations for each answer
+- Real-time feedback
+- Performance analytics
+- Quiz history tracking
 
-/subscription
+</details>
 
-Auth
-/login
+### 💎 **Subscription System**
 
-/signup
+<details>
+<summary><b>Monetization & Access</b></summary>
 
-User
-/user/dashboard
+**Dual Redemption Paths:**
+1. **XP Redemption** — Earn premium through engagement
+2. **Direct Payment** — Local mobile payment gateways
 
-/user/profile
+**Payment Integration:**
+- ✅ bKash
+- ✅ Nagad
+- ✅ Rocket
+- ✅ Upay
 
-/user/watchlist
+**Badge Benefits (Progressive Unlock):**
+- ✅ Ad-free streaming
+- ✅ Full manga library
+- ✅ Offline downloads
+- ✅ Priority notifications
+- ✅ Exclusive content access
+- ✅ Custom themes
 
-/user/bookmarks
+</details>
 
-/user/notifications
+### 📰 **News Aggregation**
 
-Admin
-/admin/login
+<details>
+<summary><b>Industry Updates</b></summary>
 
-/admin + /admin/dashboard
+- **Live News Feeds** from Anime News Network + Crunchyroll
+- **Weekly Highlights** section
+- **Critic Reviews & Vlogs** — Community editorial content
+- **Card-based Layout** with featured stories
+- **Search & Filter** by topic/date
 
-/admin/users
+</details>
 
-/admin/critics
+### 🎨 **Critic Studio**
 
-/admin/content
+<details>
+<summary><b>Content Creation Workflow</b></summary>
 
-/admin/quizzes
+**Submission Types:**
+1. **Anime Review** (300+ words)
+2. **Manga Review** (300+ words)
+3. **Episode Review** (200+ words)
+4. **Video Content** (YouTube links with summaries)
 
-/admin/review-submissions
+**Dashboard Features:**
+- Submission status tracking (Pending/Approved/Rejected)
+- Engagement metrics (views, likes, comments)
+- Performance analytics
+- Approval notifications
 
-Critic
-/critique
+**Admin Moderation:**
+- Review submissions queue
+- Approve/reject workflow
+- Feedback to critics
+- Content quality monitoring
 
-/critique/submit
+</details>
 
-/critique/submissions
+### 🛡️ **Admin Control Center**
 
-/critique/profile
+<details>
+<summary><b>Platform Management</b></summary>
 
-Getting Started
-Requirements
-Node.js 18+ recommended
+**Analytics Dashboard:**
+- 📊 1,238 Total Users (+12.4%)
+- 👥 5,456 Active Users
+- 💰 ৳895K MTD Revenue (+18.4% YTD)
+- 📈 ৳8,672 ARPU
+- 📉 3.2% Churn Rate (-0.8%)
+- ⏱️ 99.97% Uptime | 1.42s Load Time
 
-npm (or bun)
+**Management Tools:**
+- User account oversight (suspend/delete)
+- Critic content moderation
+- XP threshold configuration
+- Badge tier management
+- Revenue logs & transaction history
+- System health monitoring
+- Platform-wide notifications
 
-Install Everything (Frontend + Backend)
-bash
-Copy code
+</details>
+
+---
+
+## 🏗️ Tech Stack
+
+### **Frontend Architecture**
+```
+React 18 + TypeScript (Vite)
+├── Styling: Tailwind CSS + shadcn/ui
+├── Icons: Lucide React
+├── Routing: React Router v6
+├── State: React Context + Hooks
+├── Forms: React Hook Form + Zod
+├── API: Axios + TanStack Query
+└── Themes: Light/Dark/Neon + Custom
+```
+
+### **Backend Infrastructure** *(Designed Architecture)*
+```
+Python Flask REST API
+├── Database: MongoDB (NoSQL)
+├── Caching: Redis
+├── Authentication: JWT + Email OTP
+├── File Storage: Cloud CDN
+└── Real-time: WebSocket notifications
+```
+
+### **Current Implementation** *(Academic Project)*
+```
+Node.js Express Server (backend/server.js)
+├── Database: SQLite (quiz.db)
+├── AI: OpenRouter API (DeepSeek)
+├── Security: Helmet + CORS + Rate Limiting
+├── Validation: Express-validator
+└── Compression: Response compression
+```
+
+### **External Integrations**
+
+| Service | Purpose | Status |
+|---------|---------|--------|
+| **AniList GraphQL** | Anime metadata | ✅ Integrated |
+| **MangaDex** | Manga chapters | ✅ Integrated |
+| **Jikan** | MyAnimeList data | ✅ Integrated |
+| **Consumet** | Streaming links | ✅ Integrated |
+| **DeepSeek R1** | AI quiz generation | ✅ Integrated |
+| **bKash/Nagad/Rocket/Upay** | Local payments | 🔄 Designed |
+| **Anime News Network** | News feeds | 🔄 Designed |
+
+---
+
+## 🚀 Getting Started
+
+### **Prerequisites**
+
+```bash
+Node.js 18+
+npm or bun
+Git
+```
+
+### **Quick Start**
+
+#### **1. Clone Repository**
+```bash
+git clone https://github.com/your-username/animaze.git
+cd animaze
+```
+
+#### **2. Install Dependencies**
+```bash
+# Install everything (frontend + backend)
 npm run setup
-This installs root deps + backend deps. 
-package
 
+# Or install separately:
+npm install              # Frontend
+cd backend && npm install # Backend
+```
 
-Run Frontend + Backend Together
-bash
-Copy code
-npm run full-dev
-Frontend (Vite): http://localhost:8080/
+#### **3. Environment Configuration**
 
-Backend API: http://localhost:5000/ 
-package
+**Frontend** (`.env` in root):
+```env
+# Optional: If using Supabase authentication
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
 
+# Backend API URL
+VITE_API_BASE_URL=http://localhost:5000
+```
 
-Run Separately
-Frontend
-bash
-Copy code
-npm run dev
-Backend
-bash
-Copy code
-npm run backend:dev
-Environment Variables
-✅ Recommended: Separate env files
-Frontend env at project root: .env
-
-Backend env inside backend/: backend/.env
-
-Backend .env.example
-env
-Copy code
-# Server
+**Backend** (`backend/.env`):
+```env
+# Server Configuration
 PORT=5000
 NODE_ENV=development
 
-# OpenRouter / DeepSeek
+# AI Integration (Required for quiz generation)
 OPENROUTER_API_KEY=your_openrouter_key_here
 DEEPSEEK_MAX_TOKENS=2000
 DEEPSEEK_TEMPERATURE=0.7
@@ -248,188 +427,558 @@ DEEPSEEK_TEMPERATURE=0.7
 # Database
 DB_PATH=./quiz.db
 
-# Optional (OpenRouter headers)
+# Optional
 HTTP_REFERER=http://localhost:5000
-
-# Production CORS (used only in production mode)
 FRONTEND_URL=http://localhost:8080
-Frontend .env.example (only if you use Supabase/Auth in UI)
-env
-Copy code
-VITE_SUPABASE_URL=https://your-project-id.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anon-key
-VITE_API_BASE_URL=http://localhost:5000
-Important:
+```
 
-The backend currently allows dev CORS origins for localhost:3000 and localhost:5173. If your frontend runs on 8080, add it to backend CORS allowlist (see Troubleshooting below).
+**🔑 Get OpenRouter API Key:**
+1. Visit [openrouter.ai](https://openrouter.ai)
+2. Sign up for free account
+3. Generate API key in dashboard
+4. Add to `backend/.env`
 
-Do not commit .env. Add .env and backend/.env to .gitignore.
+#### **4. Run Development Server**
 
-Backend API
-Base URL: http://localhost:5000
+**Option A: Run Everything Together** *(Recommended)*
+```bash
+npm run full-dev
+```
+- Frontend: http://localhost:8080
+- Backend API: http://localhost:5000
 
-Health & Status
-GET /health
-Returns uptime, memory, and DB connection status.
+**Option B: Run Separately**
+```bash
+# Terminal 1 - Frontend
+npm run dev
 
-GET /api/status
-Returns features (AI enabled, DB enabled, caching enabled) and endpoint map.
+# Terminal 2 - Backend
+npm run backend:dev
+```
 
-Quiz Generation (AI + Cache + Fallback)
-POST /api/quiz
-Generates a quiz using DeepSeek via OpenRouter.
+#### **5. Access Application**
 
-Checks SQLite cache first (1-hour cache)
+```
+🌐 Application:  http://localhost:8080
+🔌 API Endpoints: http://localhost:5000
+📊 API Status:    http://localhost:5000/api/status
+💚 Health Check:  http://localhost:5000/health
+```
 
-If no API key exists or AI fails → returns enhanced mock quiz (so your app never breaks)
+### **First-Time Setup Checklist**
 
-Body
+- [ ] Install Node.js 18+
+- [ ] Clone repository
+- [ ] Run `npm run setup`
+- [ ] Create `backend/.env` with OpenRouter API key
+- [ ] Run `npm run full-dev`
+- [ ] Open http://localhost:8080
+- [ ] Create test account (sign up)
+- [ ] Try quiz generation (requires API key)
 
-json
-Copy code
+---
+
+## 📁 Project Structure
+
+```
+animaze/
+├── backend/                      # Node.js Express API
+│   ├── server.js                 # Main server with AI integration
+│   ├── quiz.db                   # SQLite database
+│   ├── package.json
+│   └── .env                      # Backend configuration
+│
+├── public/                       # Static assets
+│   ├── avatars/                  # User avatar images (a.jpeg - z.jpeg)
+│   ├── pdf cover/                # Manga cover images
+│   ├── Attack-on-Titan-CH-001.pdf
+│   ├── Dragon-Ball-1.pdf
+│   ├── Shinigamis-Hollows.pdf
+│   ├── mainlogo.png
+│   └── F.mp4                     # Hero video background
+│
+├── src/
+│   ├── components/               # React components
+│   │   ├── admin/                # Admin dashboard components
+│   │   │   └── PendingApprovals.tsx
+│   │   ├── anime/                # Anime browsing UI
+│   │   │   ├── AnimeFilters.tsx
+│   │   │   ├── PopularAnimeSection.tsx
+│   │   │   └── SearchEngine.ts
+│   │   ├── auth/                 # Authentication UI
+│   │   │   ├── LoginForm.tsx
+│   │   │   ├── SignupForm.tsx
+│   │   │   └── UserProfile.tsx
+│   │   ├── manga/                # Manga reading UI
+│   │   │   ├── MangaFilters.tsx
+│   │   │   ├── MangaSearchEngine.ts
+│   │   │   └── PopularMangaSection.tsx
+│   │   ├── quiz/                 # Quiz system
+│   │   │   ├── APIStatusIndicator.tsx
+│   │   │   ├── Leaderboard.tsx
+│   │   │   ├── QuizGameplay.tsx
+│   │   │   ├── QuizResults.tsx
+│   │   │   └── XPTracker.tsx
+│   │   ├── subscription/         # Payment & badges
+│   │   │   ├── PaymentModal.tsx
+│   │   │   ├── SubscriptionIcon.tsx
+│   │   │   └── XPRedemptionModal.tsx
+│   │   ├── ui/                   # shadcn/ui components
+│   │   │   ├── button.tsx
+│   │   │   ├── card.tsx
+│   │   │   └── ... (40+ components)
+│   │   └── user/
+│   │       ├── NotificationDropdown.tsx
+│   │       └── UserDropdown.tsx
+│   │
+│   ├── contexts/                 # React Context providers
+│   │   ├── AuthContext.tsx
+│   │   └── LanguageContext.tsx
+│   │
+│   ├── hooks/                    # Custom React hooks
+│   │   ├── useCritique.ts
+│   │   ├── useQuiz.ts
+│   │   └── useUserProgress.ts
+│   │
+│   ├── lib/                      # Core services & utilities
+│   │   ├── adminServices.ts      # Admin operations
+│   │   ├── anilist.ts            # AniList API integration
+│   │   ├── auth.ts               # Authentication logic
+│   │   ├── quizAPI.ts            # Quiz generation API
+│   │   ├── subscriptionService.ts
+│   │   └── utils.ts
+│   │
+│   ├── pages/                    # Route pages
+│   │   ├── admin/                # Admin routes
+│   │   │   ├── AdminDashboard.tsx
+│   │   │   ├── UserManagement.tsx
+│   │   │   └── ...
+│   │   ├── critique/             # Critic routes
+│   │   │   ├── CritiqueDashboard.tsx
+│   │   │   ├── SubmitContent.tsx
+│   │   │   └── ...
+│   │   ├── user/                 # User routes
+│   │   │   ├── Dashboard.tsx
+│   │   │   ├── Watchlist.tsx
+│   │   │   └── ...
+│   │   ├── About.tsx
+│   │   ├── Anime.tsx
+│   │   ├── Manga.tsx
+│   │   ├── Quiz.tsx
+│   │   └── Subscription.tsx
+│   │
+│   ├── services/                 # External API services
+│   │   ├── mangadexApi.ts
+│   │   └── quizAPI.ts
+│   │
+│   ├── styles/                   # Global styles
+│   │   ├── animations.css
+│   │   └── quiz.css
+│   │
+│   ├── types/                    # TypeScript definitions
+│   │   ├── critique.ts
+│   │   ├── news.ts
+│   │   ├── quiz.ts
+│   │   └── subscription.ts
+│   │
+│   ├── App.tsx                   # Main app component
+│   └── main.tsx                  # React entry point
+│
+├── .env                          # Frontend environment variables
+├── .gitignore
+├── package.json                  # Dependencies & scripts
+├── tailwind.config.ts            # Tailwind configuration
+├── tsconfig.json                 # TypeScript configuration
+├── vite.config.ts                # Vite bundler config
+└── README.md
+```
+
+### **Key Directories**
+
+| Directory | Purpose | Key Files |
+|-----------|---------|-----------|
+| `backend/` | Express API server | `server.js`, `quiz.db` |
+| `src/components/` | React UI components | Role-specific UI modules |
+| `src/pages/` | Route pages | Admin/Critic/User dashboards |
+| `src/lib/` | Core services | API integrations, auth logic |
+| `public/` | Static assets | Avatars, PDFs, videos |
+
+---
+
+## 🌐 Application Routes
+
+### **Public Routes**
+```
+/                    → Homepage with hero section
+/anime               → Anime browsing & search
+/anime/:id           → Anime details page
+/manga               → Manga discovery
+/manga/:id           → Manga reader
+/pdf-manga           → PDF manga collection
+/quiz                → Quiz difficulty selection
+/quiz/:id            → Active quiz gameplay
+/quiz/:id/results    → Quiz results & XP earned
+/leaderboard         → Global rankings
+/news                → Anime news feed
+/news/:id            → Full news article
+/about               → Platform information
+/reviews             → Community reviews
+/subscription        → Badge tiers & pricing
+/login               → User authentication
+/signup              → Account registration
+```
+
+### **User Routes** *(Requires Authentication)*
+```
+/user/dashboard      → Personal analytics
+/user/profile        → Profile management
+/user/watchlist      → Saved anime
+/user/bookmarks      → Saved manga
+/user/notifications  → User alerts
+```
+
+### **Admin Routes** *(Admin Only)*
+```
+/admin/login         → Admin authentication
+/admin/dashboard     → Platform analytics
+/admin/users         → User management
+/admin/critics       → Critic oversight
+/admin/content       → Content moderation
+/admin/quizzes       → Quiz management
+/admin/review-submissions → Pending approvals
+```
+
+### **Critic Routes** *(Critic Role)*
+```
+/critique            → Critic dashboard
+/critique/submit     → Submit review/vlog
+/critique/submissions → Submission history
+/critique/profile    → Critic profile
+```
+
+---
+
+## 📡 API Documentation
+
+### **Base URL**
+```
+http://localhost:5000
+```
+
+### **Endpoints**
+
+#### **Health & Status**
+
+<details>
+<summary><code>GET /health</code> - System health check</summary>
+
+**Response:**
+```json
 {
-  "difficulty": "easy",
-  "questionType": "multiple-choice",
-  "topic": "general"
+  "status": "healthy",
+  "timestamp": "2025-01-13T10:30:00.000Z",
+  "uptime": 3600,
+  "memory": {
+    "rss": 52428800,
+    "heapTotal": 20971520,
+    "heapUsed": 15728640
+  },
+  "database": "connected"
 }
-Example
+```
+</details>
 
-bash
-Copy code
-curl -X POST http://localhost:5000/api/quiz \
-  -H "Content-Type: application/json" \
-  -d '{"difficulty":"easy","questionType":"multiple-choice","topic":"naruto"}'
-Submit Results + XP
-POST /api/quiz/submit
-Stores submission + updates leaderboard.
+<details>
+<summary><code>GET /api/status</code> - API feature status</summary>
 
-Body
-
-json
-Copy code
+**Response:**
+```json
 {
-  "userId": "u123",
-  "quizId": "quiz-xyz",
+  "service": "Anime Quiz API",
+  "version": "1.0.0",
+  "status": "operational",
+  "features": {
+    "ai_integration": true,
+    "database": true,
+    "caching": true
+  },
+  "endpoints": {
+    "quiz_generation": "/api/quiz",
+    "submission": "/api/quiz/submit",
+    "leaderboard": "/api/leaderboard",
+    "user_stats": "/api/user/:id/stats"
+  }
+}
+```
+</details>
+
+#### **Quiz Generation**
+
+<details>
+<summary><code>POST /api/quiz</code> - Generate AI quiz</summary>
+
+**Request:**
+```json
+{
+  "difficulty": "medium",
+  "questionType": "multiple-choice",
+  "topic": "naruto"
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "id": "quiz-medium-1705141800000",
+    "difficulty": "medium",
+    "questions": [
+      {
+        "id": "1",
+        "question": "What is Naruto's signature technique?",
+        "options": [
+          "Rasengan",
+          "Chidori",
+          "Amaterasu",
+          "Kamui"
+        ],
+        "correct": 0,
+        "explanation": "The Rasengan is Naruto's signature jutsu, taught to him by Jiraiya."
+      }
+    ],
+    "timeLimit": 300,
+    "createdAt": "2025-01-13T10:30:00.000Z"
+  },
+  "metadata": {
+    "generated_at": "2025-01-13T10:30:00.000Z",
+    "ai_powered": true,
+    "cached": false
+  }
+}
+```
+
+**Rate Limit:** 10 requests / 5 minutes
+
+**Cache:** 1 hour per difficulty/topic combination
+</details>
+
+#### **Quiz Submission**
+
+<details>
+<summary><code>POST /api/quiz/submit</code> - Submit quiz results</summary>
+
+**Request:**
+```json
+{
+  "userId": "user_abc123",
+  "quizId": "quiz-medium-1705141800000",
   "score": 4,
   "totalQuestions": 5,
   "timeTaken": 52,
   "difficulty": "medium",
   "correctAnswers": [1, 0, 2, 3, 1]
 }
-XP Logic
+```
 
-xp = score * 10
+**Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "submissionId": 42,
+    "xpGained": 90,
+    "message": "Quiz results submitted successfully"
+  }
+}
+```
 
-+50 bonus if score === totalQuestions
+**XP Calculation:**
+```javascript
+xp = score * 10 + (score === totalQuestions ? 50 : 0)
+// 4 correct = 40 XP
+// Perfect score bonus = +50 XP
+```
 
-Leaderboard
-GET /api/leaderboard?limit=50&offset=0
-Returns ranked players sorted by total_score then xp.
+**Rate Limit:** 5 requests / 1 minute
+</details>
 
-User Stats
-GET /api/user/:id/stats
-Returns:
+#### **Leaderboard**
 
-leaderboard row for the user
+<details>
+<summary><code>GET /api/leaderboard</code> - Global rankings</summary>
 
-last 10 submissions
+**Parameters:**
+- `limit` (optional, default: 50)
+- `offset` (optional, default: 0)
 
-average score % and best score %
+**Example:** `/api/leaderboard?limit=10&offset=0`
 
-System Stats (Admin-style)
-GET /api/stats
-Returns:
+**Response:**
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "rank": 1,
+      "userId": "user_xyz789",
+      "username": "User_xyz789",
+      "totalScore": 450,
+      "quizzesTaken": 45,
+      "xp": 4500,
+      "lastActive": "2025-01-13T09:15:00.000Z"
+    }
+  ],
+  "pagination": {
+    "limit": 10,
+    "offset": 0,
+    "total": 10
+  }
+}
+```
+</details>
 
-total submissions, avg score %, unique users
+#### **User Statistics**
 
-API usage (last 24h)
+<details>
+<summary><code>GET /api/user/:id/stats</code> - User performance data</summary>
 
-server uptime/memory + AI enabled flag
+**Example:** `/api/user/user_abc123/stats`
 
-🔒 Recommended: protect this route before production.
+**Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "user": {
+      "user_id": "user_abc123",
+      "username": "User_abc123",
+      "total_score": 180,
+      "quizzes_taken": 18,
+      "xp": 1800,
+      "last_active": "2025-01-13T10:30:00.000Z"
+    },
+    "recentSubmissions": [
+      {
+        "id": 25,
+        "difficulty": "medium",
+        "score": 4,
+        "totalQuestions": 5,
+        "timeTaken": 52,
+        "submittedAt": "2025-01-13T10:00:00.000Z"
+      }
+    ],
+    "averageScore": 80,
+    "bestScore": 100
+  }
+}
+```
+</details>
 
-Cache Maintenance (Admin utility)
-POST /api/admin/clear-cache
-Clears expired cached quizzes.
+#### **Admin Endpoints**
 
-🔒 Recommended: restrict to admin only.
+<details>
+<summary><code>GET /api/stats</code> - Platform analytics (Admin)</summary>
 
-Architecture
-High-Level Flow
-Frontend requests quiz → POST /api/quiz
+**Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "quiz_stats": {
+      "total_submissions": 1250,
+      "avg_score_percentage": 0.78,
+      "unique_users": 342
+    },
+    "api_usage": [
+      {
+        "endpoint": "/quiz",
+        "total_calls": 1580,
+        "avg_response_time": 450,
+        "successful_calls": 1542
+      }
+    ],
+    "system": {
+      "uptime": 86400,
+      "memory": { /* memory stats */ },
+      "ai_enabled": true,
+      "cache_enabled": true
+    }
+  }
+}
+```
 
-Backend checks SQLite cache (quiz_cache)
+**🔒 Note:** This endpoint should be protected with admin authentication before production deployment.
+</details>
 
-If cache miss → call OpenRouter (DeepSeek)
+<details>
+<summary><code>POST /api/admin/clear-cache</code> - Clear expired cache</summary>
 
-Parse JSON safely → cache quiz → return to frontend
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Cleared 15 expired cache entries"
+}
+```
 
-Frontend submits results → POST /api/quiz/submit
+**🔒 Note:** Restrict to admin users only.
+</details>
 
-Backend stores submission + updates leaderboard + returns XP gained
+### **Rate Limits**
 
-Backend Internals
-Security headers via Helmet (CSP enabled)
+| Endpoint | Limit | Window |
+|----------|-------|--------|
+| General API | 100 requests | 15 minutes |
+| Quiz Generation | 10 requests | 5 minutes |
+| Quiz Submission | 5 requests | 1 minute |
 
-Compression for performance
+### **Error Responses**
 
-Rate limiting
+```json
+{
+  "success": false,
+  "error": "Error description",
+  "details": [/* validation errors */],
+  "timestamp": "2025-01-13T10:30:00.000Z"
+}
+```
 
-General: 100 req / 15 min
+**Common Status Codes:**
+- `200` — Success
+- `400` — Bad request / validation error
+- `404` — Endpoint not found
+- `429` — Rate limit exceeded
+- `500` — Internal server error
 
-Quiz: 10 req / 5 min
+---
 
-Submit: 5 req / 1 min
+## 🧪 Testing
 
-Validation
+### **Comprehensive Test Coverage**
 
-Express-validator enforces required fields & limits
+The project includes extensive testing across all major modules to ensure reliability and functionality.
 
-Data Storage (SQLite)
-Tables:
+#### **Test Execution**
 
-quiz_submissions (history)
+```bash
+# Frontend tests
+npm test
 
-leaderboard (rankings + xp)
+# Backend API tests
+npm run test:api
 
-api_usage (monitoring)
+# Full test suite
+npm run test:full
+```
 
-quiz_cache (1-hour cache)
+### **Test Modules**
 
-Scripts (Root)
-bash
-Copy code
-npm run dev            # frontend (Vite)
-npm run build
-npm run preview
-npm run backend:setup  # install backend deps
-npm run backend:dev    # nodemon backend
-npm run backend:start  # node backend
-npm run full-dev       # runs frontend + backend together
-npm run test:api       # backend API key test (if present)
-Troubleshooting
-CORS Error (very common)
-Your frontend runs on http://localhost:8080, but backend dev CORS allowlist doesn’t include 8080 by default.
+<details>
+<summary><b>1. Authentication Module</b></summary>
 
-Fix (recommended):
-
-Edit backend/server.js CORS dev origins and add:
-
-http://localhost:8080
-
-Example:
-
-js
-Copy code
-: ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:8080'],
-Port Already In Use
-Frontend: change Vite port in vite.config.ts
-
-Backend: change PORT in backend/.env
-
-Security Notes
-✅ Use .env.example in GitHub, keep real .env private.
-
-🔄 If any keys were leaked, rotate them immediately.
-
-Protect admin endpoints (/api/stats, /api/admin/*) before deployment.
+| Test Case | Input | Expected Result | Status |
+|-----------|-------|-----------------|--------|
+| Valid User Signup | Email, Password, Role, Avatar | Signup successful | ✅ OK |
+| Invalid Email | `wrongmail@` | Signup unsuccessful | ❌ NOT OK |
+| Weak Password | `12345` | Signup unsuccessful | ❌ NOT OK |
