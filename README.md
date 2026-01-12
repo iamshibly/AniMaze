@@ -1206,3 +1206,4 @@ Join thousands of anime fans exploring, tracking, and discovering new favorites 
 [![Twitter](https://img.shields.io/badge/Twitter-Follow-1DA1F2?logo=twitter&logoColor=white)](#)
 
 </div>
+
