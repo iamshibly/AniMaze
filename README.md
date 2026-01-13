@@ -11,8 +11,10 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express-000000?logo=express&logoColor=white)](https://expressjs.com/)
+ [![Framer Motion](https://img.shields.io/badge/Framer%20Motion-0055FF?logo=framer&logoColor=white)](https://www.framer.com/motion/)
 [![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?logo=mysql&logoColor=white)](https://www.mysql.com/)
-
+[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)](https://supabase.com/)
 
 <p>
   <a href="#-the-problem-we-solve">Problem</a> •
@@ -61,7 +63,7 @@
 ### 🧠 AI Quiz + Gamification
 - Quiz generation endpoint supports:
   - Difficulty: `easy | medium | hard`
-  - Topic: `general` or a custom topic (e.g. “naruto”)
+  - Topic: `general` or a custom topic (e.g. "naruto")
 - XP gained from score + perfect-score bonus
 - Leaderboard (ranked by score & XP)
 
@@ -1092,3 +1094,115 @@ npm run test:full
 | Valid User Signup | Email, Password, Role, Avatar | Signup successful | ✅ OK |
 | Invalid Email | `wrongmail@` | Signup unsuccessful | ❌ NOT OK |
 | Weak Password | `12345` | Signup unsuccessful | ❌ NOT OK |
+
+</details>
+
+---
+
+## 👥 Team
+
+### **Masterminds**
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center" width="33%">
+<img src="https://via.placeholder.com/200" alt="Zubayer Ahmad Shibly" width="200" style="border-radius: 10px;"/>
+<br />
+<h3>Zubayer Ahmad Shibly</h3>
+<p><strong>Full-Stack Developer</strong></p>
+<p>
+<a href="#"><img src="https://img.shields.io/badge/FULL%20STACK-blue?style=flat-square" /></a>
+<a href="#"><img src="https://img.shields.io/badge/CORE%20TEAM-green?style=flat-square" /></a>
+</p>
+</td>
+<td align="center" width="33%">
+<img src="https://via.placeholder.com/200" alt="Sheikh Arman Karim Aditto" width="200" style="border-radius: 10px;"/>
+<br />
+<h3>Sheikh Arman Karim Aditto</h3>
+<p><strong>Full-Stack Developer</strong></p>
+<p>
+<a href="#"><img src="https://img.shields.io/badge/FULL%20STACK-blue?style=flat-square" /></a>
+<a href="#"><img src="https://img.shields.io/badge/CORE%20TEAM-green?style=flat-square" /></a>
+</p>
+</td>
+<td align="center" width="33%">
+<img src="https://via.placeholder.com/200" alt="Jahidul Islam Asif" width="200" style="border-radius: 10px;"/>
+<br />
+<h3>Jahidul Islam Asif</h3>
+<p><strong>Full-Stack Developer</strong></p>
+<p>
+<a href="#"><img src="https://img.shields.io/badge/FULL%20STACK-blue?style=flat-square" /></a>
+<a href="#"><img src="https://img.shields.io/badge/CORE%20TEAM-green?style=flat-square" /></a>
+</p>
+</td>
+</tr>
+</table>
+
+</div>
+
+### **The Engine Under the Hood**
+
+<div align="center">
+
+#### **Frontend**
+![React 18+](https://img.shields.io/badge/React-18+-61DAFB?logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3-06B6D4?logo=tailwindcss&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-Latest-646CFF?logo=vite&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer%20Motion-Animation-ff69b4)
+
+#### **Backend**
+![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express-Framework-000000?logo=express&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-4169E1?logo=postgresql&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-Cache-DC382D?logo=redis&logoColor=white)
+
+#### **APIs**
+![AniList](https://img.shields.io/badge/AniList%20API-Anime-02A9FF?logo=anilist&logoColor=white)
+![MyAnimeList](https://img.shields.io/badge/MyAnimeList-Jikan-2E51A2)
+![MangaDex API](https://img.shields.io/badge/MangaDex%20API-Manga-FF6740)
+![DeepSeek AI](https://img.shields.io/badge/DeepSeek%20R1-AI-9B59B6)
+![Anime News](https://img.shields.io/badge/Anime%20News%20API-News-orange)
+![YouTube API](https://img.shields.io/badge/YouTube%20API-Videos-FF0000?logo=youtube&logoColor=white)
+
+#### **UI & Design**
+![shadcn/ui](https://img.shields.io/badge/shadcn/ui-Components-000000)
+![Lucide Icons](https://img.shields.io/badge/Lucide%20Icons-Design-F56565)
+![PopCSS](https://img.shields.io/badge/PopCSS-Styling-blueviolet)
+![Radix UI](https://img.shields.io/badge/Radix%20UI-Primitives-8B5CF6)
+
+#### **DevOps**
+![Docker](https://img.shields.io/badge/Docker-Container-2496ED?logo=docker&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-Deploy-000000?logo=vercel&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-VCS-181717?logo=github&logoColor=white)
+
+#### **Total Stack**
+![28+ Technologies](https://img.shields.io/badge/28+%20Technologies-Integrated-success)
+![7 External APIs](https://img.shields.io/badge/7%20External%20APIs-Connected-informational)
+![Production Ready](https://img.shields.io/badge/Production-Ready-brightgreen)
+
+</div>
+
+---
+
+## 🚀 Ready to Start Your Anime Journey?
+
+<div align="center">
+
+Join thousands of anime fans exploring, tracking, and discovering new favorites every day.
+
+[**🎬 Explore Now**](/) • [**📚 Read Manga**](/manga) • [**🧠 Take Quiz**](/quiz) • [**🏆 View Leaderboard**](/leaderboard)
+
+---
+
+**Made with ❤️ by the AniMaze Team**
+
+*Fueling the Bangladeshi otaku community with innovation, passion, and elite technical craftsmanship.*
+
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github&logoColor=white)](https://github.com/your-username/animaze)
+[![Discord](https://img.shields.io/badge/Discord-Community-5865F2?logo=discord&logoColor=white)](#)
+[![Twitter](https://img.shields.io/badge/Twitter-Follow-1DA1F2?logo=twitter&logoColor=white)](#)
+
+</div>
