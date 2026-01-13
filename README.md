@@ -1120,7 +1120,7 @@ npm run test:full
 <td align="center" width="44%" valign="top">
 <img src="https://via.placeholder.com/250" alt="Jahidul Islam Asif" width="250" style="border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.2);"/>
 <br />
-<h2>🌟 Jahidul Islam Asif 🌟</h2>
+<h2> Md. Jahidul Islam </h2>
 <p><strong style="font-size: 1.1em;">Full-Stack Developer</strong></p>
 <p>
 <a href="#"><img src="https://img.shields.io/badge/FULL%20STACK-blue?style=for-the-badge" /></a>
