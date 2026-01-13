@@ -482,116 +482,225 @@ npm run backend:dev
 ## 📁 Project Structure
 
 ```
-animaze/
-├── backend/                      # Node.js Express API
-│   ├── server.js                 # Main server with AI integration
-│   ├── quiz.db                   # SQLite database
-│   ├── package.json
-│   └── .env                      # Backend configuration
-│
-├── public/                       # Static assets
-│   ├── avatars/                  # User avatar images (a.jpeg - z.jpeg)
-│   ├── pdf cover/                # Manga cover images
-│   ├── Attack-on-Titan-CH-001.pdf
-│   ├── Dragon-Ball-1.pdf
-│   ├── Shinigamis-Hollows.pdf
-│   ├── mainlogo.png
-│   └── F.mp4                     # Hero video background
-│
-├── src/
-│   ├── components/               # React components
-│   │   ├── admin/                # Admin dashboard components
-│   │   │   └── PendingApprovals.tsx
-│   │   ├── anime/                # Anime browsing UI
-│   │   │   ├── AnimeFilters.tsx
-│   │   │   ├── PopularAnimeSection.tsx
-│   │   │   └── SearchEngine.ts
-│   │   ├── auth/                 # Authentication UI
-│   │   │   ├── LoginForm.tsx
-│   │   │   ├── SignupForm.tsx
-│   │   │   └── UserProfile.tsx
-│   │   ├── manga/                # Manga reading UI
-│   │   │   ├── MangaFilters.tsx
-│   │   │   ├── MangaSearchEngine.ts
-│   │   │   └── PopularMangaSection.tsx
-│   │   ├── quiz/                 # Quiz system
-│   │   │   ├── APIStatusIndicator.tsx
-│   │   │   ├── Leaderboard.tsx
-│   │   │   ├── QuizGameplay.tsx
-│   │   │   ├── QuizResults.tsx
-│   │   │   └── XPTracker.tsx
-│   │   ├── subscription/         # Payment & badges
-│   │   │   ├── PaymentModal.tsx
-│   │   │   ├── SubscriptionIcon.tsx
-│   │   │   └── XPRedemptionModal.tsx
-│   │   ├── ui/                   # shadcn/ui components
-│   │   │   ├── button.tsx
-│   │   │   ├── card.tsx
-│   │   │   └── ... (40+ components)
-│   │   └── user/
-│   │       ├── NotificationDropdown.tsx
-│   │       └── UserDropdown.tsx
-│   │
-│   ├── contexts/                 # React Context providers
-│   │   ├── AuthContext.tsx
-│   │   └── LanguageContext.tsx
-│   │
-│   ├── hooks/                    # Custom React hooks
-│   │   ├── useCritique.ts
-│   │   ├── useQuiz.ts
-│   │   └── useUserProgress.ts
-│   │
-│   ├── lib/                      # Core services & utilities
-│   │   ├── adminServices.ts      # Admin operations
-│   │   ├── anilist.ts            # AniList API integration
-│   │   ├── auth.ts               # Authentication logic
-│   │   ├── quizAPI.ts            # Quiz generation API
-│   │   ├── subscriptionService.ts
-│   │   └── utils.ts
-│   │
-│   ├── pages/                    # Route pages
-│   │   ├── admin/                # Admin routes
-│   │   │   ├── AdminDashboard.tsx
-│   │   │   ├── UserManagement.tsx
-│   │   │   └── ...
-│   │   ├── critique/             # Critic routes
-│   │   │   ├── CritiqueDashboard.tsx
-│   │   │   ├── SubmitContent.tsx
-│   │   │   └── ...
-│   │   ├── user/                 # User routes
-│   │   │   ├── Dashboard.tsx
-│   │   │   ├── Watchlist.tsx
-│   │   │   └── ...
-│   │   ├── About.tsx
-│   │   ├── Anime.tsx
-│   │   ├── Manga.tsx
-│   │   ├── Quiz.tsx
-│   │   └── Subscription.tsx
-│   │
-│   ├── services/                 # External API services
-│   │   ├── My SQLApi.ts
-│   │   └── quizAPI.ts
-│   │
-│   ├── styles/                   # Global styles
-│   │   ├── animations.css
-│   │   └── quiz.css
-│   │
-│   ├── types/                    # TypeScript definitions
-│   │   ├── critique.ts
-│   │   ├── news.ts
-│   │   ├── quiz.ts
-│   │   └── subscription.ts
-│   │
-│   ├── App.tsx                   # Main app component
-│   └── main.tsx                  # React entry point
-│
-├── .env                          # Frontend environment variables
-├── .gitignore
-├── package.json                  # Dependencies & scripts
-├── tailwind.config.ts            # Tailwind configuration
-├── tsconfig.json                 # TypeScript configuration
-├── vite.config.ts                # Vite bundler config
-└── README.md
+bangla-anime-verse-main /
+└── AniMaze Logo/
+    ├── .cursor/
+    │   └── plans/
+    │       └── deploy_to_dokploy_monolithic.plan.md
+    │
+    ├── backend/                          # Node.js Express API
+    │   ├── config/
+    │   │   ├── cors.js
+    │   │   ├── database.js
+    │   │   └── index.js
+    │   ├── controllers/
+    │   │   ├── animeYoutubeController.js
+    │   │   ├── healthController.js
+    │   │   ├── leaderboardController.js
+    │   │   ├── quizController.js
+    │   │   ├── statsController.js
+    │   │   └── submissionController.js
+    │   ├── data/
+    │   │   └── animeYoutubeLinks.json
+    │   ├── errors/
+    │   ├── middleware/
+    │   │   ├── adminAuth.js
+    │   │   ├── errorHandler.js
+    │   │   ├── index.js
+    │   │   ├── logger.js
+    │   │   ├── rateLimiter.js
+    │   │   └── validator.js
+    │   ├── routes/
+    │   │   ├── animeYoutube.js
+    │   │   ├── health.js
+    │   │   ├── index.js
+    │   │   ├── leaderboard.js
+    │   │   ├── quiz.js
+    │   │   ├── stats.js
+    │   │   └── submission.js
+    │   ├── services/
+    │   │   ├── animeYoutubeService.js
+    │   │   ├── apiUsageService.js
+    │   │   ├── cacheService.js
+    │   │   ├── databaseService.js
+    │   │   └── quizService.js
+    │   ├── utils/
+    │   │   ├── animeYoutubeFileStore.js
+    │   │   ├── prompts.js
+    │   │   └── quizUtils.js
+    │   ├── .env
+    │   ├── .env.example
+    │   ├── Dockerfile
+    │   ├── FIX_PRODUCTION_YOUTUBE_LINKS.sql
+    │   ├── package.json
+    │   ├── package-lock.json
+    │   ├── server.js
+    │   ├── SUPABASE_SETUP.md
+    │   ├── supabase-schema.sql
+    │   └── test-supabase.js
+    │
+    ├── frontend/                         # React + Vite frontend
+    │   ├── public/
+    │   │   ├── avatars/
+    │   │   │   ├── a.jpeg
+    │   │   │   ├── ab.jpeg
+    │   │   │   ├── ac.jpg
+    │   │   │   ├── ad.jpeg
+    │   │   │   ├── b.jpeg
+    │   │   │   ├── c.jpg
+    │   │   │   ├── d.jpg
+    │   │   │   ├── e.jpeg
+    │   │   │   ├── f.jpeg
+    │   │   │   ├── g.jpeg
+    │   │   │   ├── h.jpeg
+    │   │   │   ├── i.jpeg
+    │   │   │   ├── j.jpeg
+    │   │   │   ├── k.jpeg
+    │   │   │   ├── l.jpeg
+    │   │   │   ├── m.jpeg
+    │   │   │   ├── mainlogo.png
+    │   │   │   ├── n.jpeg
+    │   │   │   ├── o.jpeg
+    │   │   │   ├── p.jpeg
+    │   │   │   ├── q.jpg
+    │   │   │   ├── r.jpg
+    │   │   │   ├── s.jpg
+    │   │   │   ├── t.jpg
+    │   │   │   ├── u.jpg
+    │   │   │   ├── v.jpg
+    │   │   │   ├── w.jpeg
+    │   │   │   ├── x.jpg
+    │   │   │   ├── y.jpeg
+    │   │   │   └── z.jpeg
+    │   │   ├── F.gif
+    │   │   ├── favicon.ico
+    │   │   ├── mainlogo (1).png
+    │   │   ├── mainlogo.png
+    │   │   ├── mu.jpg
+    │   │   ├── placeholder.svg
+    │   │   ├── robots.txt
+    │   │   └── zu.jpg
+    │   │
+    │   ├── src/
+    │   │   ├── __tests__/
+    │   │   │   └── subscription.test.ts
+    │   │   ├── components/
+    │   │   │   ├── admin/
+    │   │   │   ├── anime/
+    │   │   │   ├── auth/
+    │   │   │   ├── manga/
+    │   │   │   ├── providers/
+    │   │   │   ├── quiz/
+    │   │   │   ├── subscription/
+    │   │   │   ├── ui/
+    │   │   │   ├── user/
+    │   │   │   ├── AdminLayout.tsx
+    │   │   │   ├── CritiqueLayout.tsx
+    │   │   │   ├── DebugTest.tsx
+    │   │   │   ├── LanguageContext.tsx
+    │   │   │   ├── Layout.tsx
+    │   │   │   ├── UserLayout.tsx
+    │   │   │   └── VideoSection.tsx
+    │   │   ├── contexts/
+    │   │   │   ├── AuthContext.tsx
+    │   │   │   └── LanguageContext.tsx
+    │   │   ├── data/
+    │   │   │   ├── mockNews.ts
+    │   │   │   └── mockQuizzes.ts
+    │   │   ├── hooks/
+    │   │   │   ├── useCritique.ts
+    │   │   │   ├── use-mobile.tsx
+    │   │   │   ├── useQuiz.ts
+    │   │   │   ├── use-toast.ts
+    │   │   │   └── useUserProgress.ts
+    │   │   ├── lib/
+    │   │   │   ├── utils/
+    │   │   │   ├── adminServices.ts
+    │   │   │   ├── anilist.ts
+    │   │   │   ├── animeYoutubeLinks.ts
+    │   │   │   ├── auth.ts
+    │   │   │   ├── authInitialization.ts
+    │   │   │   ├── avatars.ts
+    │   │   │   ├── critiqueServices.ts
+    │   │   │   ├── keiyoushiService.ts
+    │   │   │   ├── localStorage.ts
+    │   │   │   ├── mangaDexService.ts
+    │   │   │   ├── mangaHookService.ts
+    │   │   │   ├── mockData.ts
+    │   │   │   ├── paymentGateways.ts
+    │   │   │   ├── quizAPI.ts
+    │   │   │   ├── QuizTaking.tsx
+    │   │   │   ├── realtimeService.ts
+    │   │   │   ├── subscriptionService.ts
+    │   │   │   ├── userServices.ts
+    │   │   │   └── utils.ts
+    │   │   ├── pages/
+    │   │   │   ├── admin/
+    │   │   │   ├── critique/
+    │   │   │   ├── user/
+    │   │   │   ├── About.tsx
+    │   │   │   ├── Anime.tsx
+    │   │   │   ├── AnimeDetail.tsx
+    │   │   │   ├── CombinedAuthPage.tsx
+    │   │   │   ├── Home.tsx
+    │   │   │   ├── Index.tsx
+    │   │   │   ├── Leaderboard.tsx
+    │   │   │   ├── Manga.tsx
+    │   │   │   ├── MangaDetail.tsx
+    │   │   │   ├── MangaReader.tsx
+    │   │   │   ├── News.tsx
+    │   │   │   ├── NewsDetail.tsx
+    │   │   │   ├── NotFound.tsx
+    │   │   │   ├── PublicReviews.tsx
+    │   │   │   ├── Quiz.tsx
+    │   │   │   ├── QuizResults.tsx
+    │   │   │   ├── QuizTaking.tsx
+    │   │   │   └── Subscription.tsx
+    │   │   ├── routes/
+    │   │   │   └── adminRoutes.tsx
+    │   │   ├── services/
+    │   │   │   ├── animeYoutubeAPI.ts
+    │   │   │   ├── critiqueServices.ts
+    │   │   │   ├── mangadxApi.ts
+    │   │   │   └── quizAPI.ts
+    │   │   ├── styles/
+    │   │   │   ├── animations.css
+    │   │   │   └── quiz.css
+    │   │   ├── types/
+    │   │   │   ├── critique.ts
+    │   │   │   ├── news.ts
+    │   │   │   ├── quiz.ts
+    │   │   │   └── subscription.ts
+    │   │   ├── utils/
+    │   │   │   └── imageUtils.ts
+    │   │   ├── App.css
+    │   │   ├── App.tsx
+    │   │   ├── index.css
+    │   │   ├── main.tsx
+    │   │   └── vite-env.d.ts
+    │   │
+    │   ├── .env
+    │   ├── .env.example
+    │   ├── components.json
+    │   ├── Dockerfile
+    │   ├── eslint.config.js
+    │   ├── index.html
+    │   ├── package.json
+    │   ├── package-lock.json
+    │   ├── postcss.config.js
+    │   ├── tailwind.config.js
+    │   ├── tailwind.config.ts
+    │   ├── tsconfig.app.json
+    │   ├── tsconfig.json
+    │   ├── tsconfig.node.json
+    │   ├── vercel.json
+    │   └── vite.config.ts
+    │
+    ├── .dockerignore
+    ├── .env
+    ├── .env.example
+    └── .gitignore
+
 ```
 
 ### **Key Directories**
