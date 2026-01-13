@@ -1108,7 +1108,7 @@ npm run test:full
 <table>
 <tr>
 <td align="center" width="28%" valign="bottom">
-<img src="https://via.placeholder.com/180" alt="Zubayer Ahmad Shibly" width="180" style="border-radius: 10px;"/>
+
 <br />
 <h4>Zubayer Ahmad Shibly</h4>
 <p><strong>Full-Stack Developer</strong></p>
@@ -1118,7 +1118,7 @@ npm run test:full
 </p>
 </td>
 <td align="center" width="44%" valign="top">
-<img src="https://via.placeholder.com/250" alt="Jahidul Islam Asif" width="250" style="border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.2);"/>
+
 <br />
 <h2> Md. Jahidul Islam </h2>
 <p><strong style="font-size: 1.1em;">Full-Stack Developer</strong></p>
@@ -1128,7 +1128,7 @@ npm run test:full
 </p>
 </td>
 <td align="center" width="28%" valign="bottom">
-<img src="https://via.placeholder.com/180" alt="Sheikh Arman Karim Aditto" width="180" style="border-radius: 10px;"/>
+
 <br />
 <h4>Sheikh Arman Karim Aditto</h4>
 <p><strong>Full-Stack Developer</strong></p>
