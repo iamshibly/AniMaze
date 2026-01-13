@@ -1,6 +1,6 @@
 <div align="center">
 
-![AniMaze Logo](public/mainlogo.png)
+![AniMaze Logo](backend/mainlogo.png)
 
 # AniMaze 🎌✨  
 ### Bangladesh's First AI-Powered Anime & Manga Platform  
