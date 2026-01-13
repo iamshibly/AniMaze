@@ -1107,30 +1107,30 @@ npm run test:full
 
 <table>
 <tr>
-<td align="center" width="33%">
-<img src="https://via.placeholder.com/200" alt="Zubayer Ahmad Shibly" width="200" style="border-radius: 10px;"/>
+<td align="center" width="28%" valign="bottom">
+<img src="https://via.placeholder.com/180" alt="Zubayer Ahmad Shibly" width="180" style="border-radius: 10px;"/>
 <br />
-<h3>Zubayer Ahmad Shibly</h3>
+<h4>Zubayer Ahmad Shibly</h4>
 <p><strong>Full-Stack Developer</strong></p>
 <p>
 <a href="#"><img src="https://img.shields.io/badge/FULL%20STACK-blue?style=flat-square" /></a>
 <a href="#"><img src="https://img.shields.io/badge/CORE%20TEAM-green?style=flat-square" /></a>
 </p>
 </td>
-<td align="center" width="33%">
-<img src="https://via.placeholder.com/200" alt="Sheikh Arman Karim Aditto" width="200" style="border-radius: 10px;"/>
+<td align="center" width="44%" valign="top">
+<img src="https://via.placeholder.com/250" alt="Jahidul Islam Asif" width="250" style="border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.2);"/>
 <br />
-<h3>Sheikh Arman Karim Aditto</h3>
-<p><strong>Full-Stack Developer</strong></p>
+<h2>🌟 Jahidul Islam Asif 🌟</h2>
+<p><strong style="font-size: 1.1em;">Full-Stack Developer</strong></p>
 <p>
-<a href="#"><img src="https://img.shields.io/badge/FULL%20STACK-blue?style=flat-square" /></a>
-<a href="#"><img src="https://img.shields.io/badge/CORE%20TEAM-green?style=flat-square" /></a>
+<a href="#"><img src="https://img.shields.io/badge/FULL%20STACK-blue?style=for-the-badge" /></a>
+<a href="#"><img src="https://img.shields.io/badge/CORE%20TEAM-green?style=for-the-badge" /></a>
 </p>
 </td>
-<td align="center" width="33%">
-<img src="https://via.placeholder.com/200" alt="Jahidul Islam Asif" width="200" style="border-radius: 10px;"/>
+<td align="center" width="28%" valign="bottom">
+<img src="https://via.placeholder.com/180" alt="Sheikh Arman Karim Aditto" width="180" style="border-radius: 10px;"/>
 <br />
-<h3>Jahidul Islam Asif</h3>
+<h4>Sheikh Arman Karim Aditto</h4>
 <p><strong>Full-Stack Developer</strong></p>
 <p>
 <a href="#"><img src="https://img.shields.io/badge/FULL%20STACK-blue?style=flat-square" /></a>
