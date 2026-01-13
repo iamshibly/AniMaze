@@ -152,7 +152,7 @@ No alternatives     →      Premium access via XP redemption
 
 **Zero copyright hosting** — all content pulled through licensed APIs:
 - **AniList GraphQL** — Comprehensive anime metadata
-- **MangaDex** — Manga chapters and reading progress
+- **My SQL** — Manga chapters and reading progress
 - **Jikan** — MyAnimeList data integration
 - **Consumet** — Streaming links and episode tracking
 - **Anime News Network + Crunchyroll News** — Industry updates
@@ -364,7 +364,7 @@ Node.js Express Server (backend/server.js)
 | Service | Purpose | Status |
 |---------|---------|--------|
 | **AniList GraphQL** | Anime metadata | ✅ Integrated |
-| **MangaDex** | Manga chapters | ✅ Integrated |
+| **My SQL** | Manga chapters | ✅ Integrated |
 | **Jikan** | MyAnimeList data | ✅ Integrated |
 | **Consumet** | Streaming links | ✅ Integrated |
 | **DeepSeek R1** | AI quiz generation | ✅ Integrated |
@@ -568,7 +568,7 @@ animaze/
 │   │   └── Subscription.tsx
 │   │
 │   ├── services/                 # External API services
-│   │   ├── mangadexApi.ts
+│   │   ├── My SQLApi.ts
 │   │   └── quizAPI.ts
 │   │
 │   ├── styles/                   # Global styles
