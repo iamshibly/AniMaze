@@ -42,18 +42,27 @@ export default function CombinedAuthPage() {
   }, [navigate]);
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-slate-950">
       {/* Background Video */}
-      <video 
-        autoPlay 
-        muted 
-        loop 
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        style={{ filter: 'brightness(0.7) contrast(1.1)' }}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+        style={{ containerType: 'size' }}
       >
-        <source src="/F.mp4" type="video/mp4" />
-      </video>
+        <iframe
+          title="AniMaze background video"
+          src="https://www.youtube.com/embed/hudnZ1kt7Kc?autoplay=1&mute=1&loop=1&playlist=hudnZ1kt7Kc&controls=0&playsinline=1"
+          allow="autoplay; encrypted-media"
+          referrerPolicy="strict-origin-when-cross-origin"
+          tabIndex={-1}
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-0"
+          style={{
+            width: 'max(100cqw, 177.778cqh)',
+            height: 'max(100cqh, 56.25cqw)',
+            filter: 'brightness(0.7) contrast(1.1)',
+          }}
+        />
+      </div>
       
       {/* Enhanced Dark Overlay with Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-purple-900/30 to-black/70 z-10"></div>
