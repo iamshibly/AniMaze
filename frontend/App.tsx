@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
@@ -28,6 +28,7 @@ import UserManagement from "./pages/admin/UserManagement";
 import AdminLayout from "./components/AdminLayout";
 import CriticManagement from "./pages/admin/CriticManagement";
 import ReviewSubmissions from "./pages/admin/ReviewSubmissions";
+import AdminNotifications from "./pages/admin/AdminNotifications";
 import UserNotifications from "./pages/user/Notifications";
 import Bookmarks from "./pages/user/Bookmarks";
 import PublicReviews from "./pages/PublicReviews";
@@ -140,6 +141,7 @@ function App() {
                 <Route path="/user/watchlist" element={<Layout><UserWatchlist /></Layout>} />
                 
                 {/* Existing User Routes */}
+                <Route path="/notifications" element={<Navigate to="/user/notifications" replace />} />
                 <Route path="/user/notifications" element={<Layout><UserNotifications /></Layout>} />
                 <Route path="/user/bookmarks" element={<Layout><Bookmarks /></Layout>} />
 
@@ -151,6 +153,7 @@ function App() {
                 <Route path="/admin/critics" element={<AdminLayout><CriticManagement /></AdminLayout>} />
                 <Route path="/admin/content" element={<AdminLayout><ContentManagement /></AdminLayout>} />
                 <Route path="/admin/quizzes" element={<AdminLayout><QuizManagement /></AdminLayout>} />
+                <Route path="/admin/notifications" element={<AdminLayout><AdminNotifications /></AdminLayout>} />
                 <Route path="/admin/review-submissions" element={<AdminLayout><ReviewSubmissions /></AdminLayout>} />
                 {/* FIXED: Critique Routes - Use your actual critique components */}
                 <Route path="/critique" element={<CritiqueDashboard />} />

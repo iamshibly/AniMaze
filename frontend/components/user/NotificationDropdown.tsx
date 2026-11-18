@@ -155,7 +155,7 @@ const NotificationDropdown: React.FC<NotificationDropdownProps> = ({
         <DropdownMenuSeparator />
         
         <DropdownMenuItem asChild>
-          <Link to="/notifications" className="w-full cursor-pointer">
+          <Link to="/user/notifications" className="w-full cursor-pointer">
             <div className="flex items-center justify-center w-full py-2">
               <Eye className="h-4 w-4 mr-2" />
               View all notifications

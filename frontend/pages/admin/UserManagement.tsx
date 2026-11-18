@@ -38,6 +38,7 @@ import {
   User
 } from 'lucide-react';
 import { AdminService, AdminManagedUser, ADMIN_NOTIFICATION_TEMPLATES } from '@/lib/adminServices';
+import PendingApprovals from '@/components/admin/PendingApprovals';
 
 export default function UserManagement() {
   const [users, setUsers] = useState<AdminManagedUser[]>([]);
@@ -291,6 +292,8 @@ export default function UserManagement() {
           </p>
         </div>
       </div>
+
+      <PendingApprovals onRefresh={loadUsers} />
 
       {/* Filters and Search */}
       <Card>

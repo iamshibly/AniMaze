@@ -66,6 +66,7 @@ import {
 } from 'lucide-react';
 import { AuthService } from '@/lib/auth'; // ADD THIS IMPORT
 import PendingApprovals from '@/components/admin/PendingApprovals'; // ADD THIS IMPORT
+import { Link } from 'react-router-dom';
 
 export default function AdminDashboard() {
   const [adminUser, setAdminUser] = useState<any>(null);
@@ -305,9 +306,9 @@ export default function AdminDashboard() {
                   </p>
                 </div>
               </div>
-              <Badge variant="secondary" className="bg-yellow-200 text-yellow-800">
-                Action Required
-              </Badge>
+              <Button asChild variant="outline">
+                <Link to="/admin/users">Review pending users</Link>
+              </Button>
             </div>
           </CardContent>
         </Card>
