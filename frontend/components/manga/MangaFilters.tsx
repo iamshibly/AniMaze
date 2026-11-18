@@ -7,6 +7,8 @@ import { Slider } from '@/components/ui/slider';
 import { Separator } from '@/components/ui/separator';
 import { Filter, ChevronDown, X, Grid, List } from 'lucide-react';
 
+export const latestMangaYear = new Date().getFullYear();
+
 interface MangaFiltersProps {
   // Filter state
   selectedGenres: string[];
@@ -125,7 +127,7 @@ export default function MangaFilters({
                           volumeRange[0] !== 0 || volumeRange[1] !== 200 ||
                           chapterRange[0] !== 0 || chapterRange[1] !== 1500 ||
                           ratingRange[0] !== 0 || ratingRange[1] !== 10 ||
-                          yearRange[0] !== 1950 || yearRange[1] !== 2024;
+                          yearRange[0] !== 1950 || yearRange[1] !== latestMangaYear;
 
   return (
     <div className="space-y-6">
@@ -426,7 +428,7 @@ export default function MangaFilters({
               <Slider
                 value={yearRange}
                 onValueChange={(value) => onYearRangeChange(value as [number, number])}
-                max={2024}
+                max={latestMangaYear}
                 min={1950}
                 step={1}
                 className="w-full"

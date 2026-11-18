@@ -237,9 +237,9 @@ export const QuizResults = ({ result, quiz, onRetry, onNewQuiz, onBackToMenu }: 
                                     ? question.options?.[userAnswer?.userAnswer as number] || 'No answer'
                                     : question.type === 'true-false'
                                       ? (userAnswer?.userAnswer === 1 ? 'True' : userAnswer?.userAnswer === 0 ? 'False' : 'No answer')
-                                      : question.type === 'multiple-select'
+                                      : question.type === 'multiple-select' || question.type === 'ranking'
                                         ? Array.isArray(userAnswer?.userAnswer) 
-                                          ? (userAnswer.userAnswer as number[]).map(idx => question.options?.[idx]).join(', ') || 'No answer'
+                                          ? userAnswer.userAnswer.map(idx => question.options?.[idx]).join(question.type === 'ranking' ? ' → ' : ', ') || 'No answer'
                                           : 'No answer'
                                       : userAnswer?.userAnswer?.toString() || 'No answer'
                                   }
@@ -253,9 +253,9 @@ export const QuizResults = ({ result, quiz, onRetry, onNewQuiz, onBackToMenu }: 
                                     ? question.options?.[question.correctAnswer as number]
                                     : question.type === 'true-false'
                                       ? (question.correctAnswer === 1 ? 'True' : 'False')
-                                      : question.type === 'multiple-select'
+                                      : question.type === 'multiple-select' || question.type === 'ranking'
                                         ? Array.isArray(question.correctAnswer)
-                                          ? (question.correctAnswer as number[]).map(idx => question.options?.[idx]).join(', ')
+                                          ? question.correctAnswer.map(idx => question.options?.[idx]).join(question.type === 'ranking' ? ' → ' : ', ')
                                           : question.correctAnswer?.toString()
                                         : question.correctAnswer?.toString()
                                   }

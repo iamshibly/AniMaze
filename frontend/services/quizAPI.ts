@@ -115,6 +115,16 @@ class QuizAPIService {
       if (question.correctAnswer === undefined || question.correctAnswer === null) {
         throw new Error(`Invalid question at index ${index}: correctAnswer is required`);
       }
+
+      if (question.type === 'ranking') {
+        const { options, correctAnswer } = question;
+        if (!Array.isArray(options) || options.length < 2 ||
+          !Array.isArray(correctAnswer) || correctAnswer.length !== options.length ||
+          new Set(correctAnswer).size !== options.length ||
+          correctAnswer.some(position => !Number.isInteger(position) || position < 0 || position >= options.length)) {
+          throw new Error(`Invalid ranking question at index ${index}: expected an ordered list of option indices`);
+        }
+      }
     });
 
     console.log('Quiz validation passed');

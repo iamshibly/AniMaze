@@ -258,7 +258,13 @@ const checkAnswer = (question: Question, userAnswer: string | number | number[])
     return !isNaN(userNum) && !isNaN(correctNum) && userNum === correctNum;
   }
   
-  // Default comparison for other question types (fill-blank, ranking, etc.)
+  if (question.type === 'ranking') {
+    return Array.isArray(userAnswer) && Array.isArray(question.correctAnswer) &&
+      userAnswer.length === question.correctAnswer.length &&
+      question.correctAnswer.every((option, index) => option === userAnswer[index]);
+  }
+
+  // Default comparison for other question types
   const userAnswerStr = String(userAnswer).toLowerCase().trim();
   const correctAnswerStr = String(question.correctAnswer).toLowerCase().trim();
   return userAnswerStr === correctAnswerStr;

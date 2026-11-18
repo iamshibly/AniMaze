@@ -1,5 +1,12 @@
 import { NewsArticle } from '@/types/news';
 
+export const localImageFallback = '/placeholder.svg';
+
+export function showLocalImageFallback(event: React.SyntheticEvent<HTMLImageElement>) {
+  const image = event.currentTarget;
+  if (image.getAttribute('src') !== localImageFallback) image.src = localImageFallback;
+}
+
 // Generic logo patterns that should be filtered out
 const GENERIC_LOGO_PATTERNS = [
   'logo.png',

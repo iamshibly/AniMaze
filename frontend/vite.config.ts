@@ -8,6 +8,13 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    proxy: {
+      "^/mangadex-api/manga(?:\\?|$)": {
+        target: "https://api.mangadex.org",
+        changeOrigin: true,
+        rewrite: (url) => url.replace(/^\/mangadex-api/, ""),
+      },
+    },
   },
   plugins: [
     react(),

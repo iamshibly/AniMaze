@@ -45,6 +45,11 @@ export const QuizGameplay = ({
 }: QuizGameplayProps) => {
   const [selectedAnswer, setSelectedAnswer] = useState<string | number | number[]>('');
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const requiresRanking = currentQuestion.type === 'ranking';
+  const optionCount = currentQuestion.options?.length ?? 0;
+  const canSubmit = Array.isArray(selectedAnswer)
+    ? requiresRanking ? optionCount >= 2 && selectedAnswer.length === optionCount : selectedAnswer.length > 0
+    : !requiresRanking && selectedAnswer !== '';
 
   // Timer effect
   useEffect(() => {
@@ -68,7 +73,7 @@ export const QuizGameplay = ({
   }, [currentQuestion.id]);
 
   const handleSubmit = () => {
-    if (selectedAnswer !== '' && !hasSubmitted) {
+    if (canSubmit && !hasSubmitted) {
       setHasSubmitted(true);
       onAnswer(selectedAnswer);
       
@@ -183,7 +188,8 @@ export const QuizGameplay = ({
     const selectedArray = Array.isArray(selectedAnswer) ? selectedAnswer : [];
     
     return currentQuestion.options?.map((option, index) => {
-      const isSelected = selectedArray.includes(index);
+      const position = selectedArray.indexOf(index);
+      const isSelected = position !== -1;
       
       return (
         <Button
@@ -204,13 +210,14 @@ export const QuizGameplay = ({
             }
           }}
           disabled={hasSubmitted}
+          aria-pressed={isSelected}
         >
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-3">
               <div className={`w-5 h-5 border-2 rounded flex items-center justify-center ${
                 isSelected ? 'bg-blue-500 border-blue-500' : 'border-gray-300'
               }`}>
-                {isSelected && <span className="text-white text-xs">✓</span>}
+                {isSelected && <span className="text-white text-xs">{requiresRanking ? position + 1 : '✓'}</span>}
               </div>
               <span className="text-left flex-1">{option}</span>
             </div>
@@ -345,7 +352,12 @@ export const QuizGameplay = ({
               {currentQuestion.type === 'mcq' && renderMCQOptions()}
               {currentQuestion.type === 'true-false' && renderTrueFalse()}
               {currentQuestion.type === 'fill-blank' && renderFillInBlank()}
-              {currentQuestion.type === 'multiple-select' && renderMultipleSelect()}
+              {requiresRanking && (
+                <p className="text-sm text-muted-foreground">
+                  Select every option in order. Select an item again to remove it from your ranking.
+                </p>
+              )}
+              {(requiresRanking || currentQuestion.type === 'multiple-select') && renderMultipleSelect()}
               {currentQuestion.type === 'number' && renderNumber()}
             </div>
 
@@ -353,10 +365,7 @@ export const QuizGameplay = ({
             {!hasSubmitted && (
               <Button
                 onClick={handleSubmit}
-                disabled={
-                  selectedAnswer === '' || 
-                  (Array.isArray(selectedAnswer) && selectedAnswer.length === 0)
-                }
+                disabled={!canSubmit}
                 className="w-full"
                 size="lg"
               >

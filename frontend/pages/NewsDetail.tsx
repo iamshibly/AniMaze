@@ -16,6 +16,8 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { showLocalImageFallback } from '@/utils/imageUtils';
+import { findNewsItem } from './News';
 
 interface NewsItem {
   id: string;
@@ -234,9 +236,9 @@ export default function NewsDetail() {
 
   useEffect(() => {
     if (id) {
-      const item = allNewsData.find(news => news.id === id);
+      const item = allNewsData.find(news => news.id === id) ?? findNewsItem(id);
+      setNewsItem(item ?? null);
       if (item) {
-        setNewsItem(item);
         setLikes(Math.floor(Math.random() * 500) + 50); // Random likes for demo
         
         // Check if bookmarked (demo - would normally check user data)
@@ -382,6 +384,7 @@ export default function NewsDetail() {
           <img 
             src={newsItem.image} 
             alt={newsItem.title}
+            onError={showLocalImageFallback}
             className="w-full h-64 md:h-96 object-cover rounded-t-lg"
           />
           <div className="absolute top-4 left-4">
@@ -555,6 +558,7 @@ export default function NewsDetail() {
                   <img 
                     src={relatedItem.image} 
                     alt={relatedItem.title}
+                    onError={showLocalImageFallback}
                     className="w-20 h-20 object-cover rounded"
                   />
                   <div className="flex-1">

@@ -20,6 +20,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { showLocalImageFallback } from '@/utils/imageUtils';
 
 interface NewsItem {
   id: string;
@@ -230,7 +231,7 @@ The film, which serves as a prequel to the main Jujutsu Kaisen series, tells the
 Voice actor Megumi Ogata, who plays Yuta Okkotsu, recorded special introductory segments for the re-release. The film will also feature enhanced audio mixing optimized for the IMAX experience.
 
 The re-release is scheduled for theaters in over 40 countries, with tickets going on sale next month. Special collector's items will be available at participating theaters, including limited-edition posters and soundtrack CDs.`,
-    image: 'https://images.unsplash.com/photo-1489599904388-7eb7bdcbe5ab?w=400&h=200&fit=crop',
+    image: 'https://p.potaufeu.asahi.com/c50d-p/picture/26508621/60cd39de765ff3c21e072f1e706a45dd.jpg',
     category: 'anime',
     publishDate: new Date(Date.now() - 604800000).toISOString(),
     source: 'IMAX Entertainment',
@@ -500,6 +501,10 @@ The success of Tokyo Anime Fair 2025 reflects the medium's continued growth and 
   }
 ];
 
+export function findNewsItem(id: string) {
+  return [...enhancedAnimeNews, ...enhancedMangaNews, ...enhancedTopStories].find(item => item.id === id);
+}
+
 export default function News() {
   const [animeNews, setAnimeNews] = useState<NewsItem[]>([]);
   const [mangaNews, setMangaNews] = useState<NewsItem[]>([]);
@@ -711,6 +716,7 @@ export default function News() {
         <img 
           src={item.image} 
           alt={item.title}
+          onError={showLocalImageFallback}
           className="w-full h-48 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
         />
         {item.trending && (
@@ -783,6 +789,7 @@ export default function News() {
         <img 
           src={story.image} 
           alt={story.title}
+          onError={showLocalImageFallback}
           className="w-full h-64 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
         />
         {story.featured && (

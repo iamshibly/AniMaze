@@ -157,8 +157,8 @@ export const mockQuestions: Question[] = [
     type: 'ranking',
     difficulty: 'hard',
     question: "Rank these anime by their release year (earliest to latest):",
-    options: ['Dragon Ball', 'Naruto', 'Attack on Titan', 'Demon Slayer'],
-    correctAnswer: [0, 1, 2, 3], // Dragon Ball (1986), Naruto (2002), AoT (2013), Demon Slayer (2019)
+    options: ['Attack on Titan', 'Dragon Ball', 'Demon Slayer', 'Naruto'],
+    correctAnswer: [1, 3, 0, 2], // Dragon Ball (1986), Naruto (2002), AoT (2013), Demon Slayer (2019)
     explanation: "Dragon Ball started in 1986, Naruto in 2002, Attack on Titan in 2013, and Demon Slayer in 2019.",
     timeLimit: 45
   },

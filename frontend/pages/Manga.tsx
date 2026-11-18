@@ -5,91 +5,107 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Book, Star, Search, TrendingUp, Loader2 } from 'lucide-react';
-import { type Manga } from '@/lib/mockData';
+import { mockMangas, type Manga } from '@/lib/mockData';
+import { pdfMangas } from '@/data/pdfMangas';
+import { localImageFallback, showLocalImageFallback } from '@/utils/imageUtils';
 import { MangaSearchEngine, type MangaSearchResult } from '@/components/manga/MangaSearchEngine';
-import MangaFilters from '@/components/manga/MangaFilters';
+import MangaFilters, { latestMangaYear } from '@/components/manga/MangaFilters';
 
-// MangaDex API functions
-const MANGADEX_API = 'https://api.mangadex.org';
+type CatalogManga = Manga & { readUrl?: string; chapterCount?: number };
 
-async function fetchMangaDexData(limit = 100, offset = 0): Promise<Manga[]> {
-  try {
-    const response = await fetch(
-      `${MANGADEX_API}/manga?limit=${limit}&offset=${offset}&includes[]=cover_art&includes[]=author&includes[]=artist&contentRating[]=safe&contentRating[]=suggestive&order[followedCount]=desc&hasAvailableChapters=true`
-    );
-    
-    if (!response.ok) throw new Error('Failed to fetch from MangaDex');
-    
-    const data = await response.json();
-    
-    return data.data.map((manga: any) => {
-      const coverArt = manga.relationships.find((rel: any) => rel.type === 'cover_art');
-      const author = manga.relationships.find((rel: any) => rel.type === 'author');
-      
-      const coverUrl = coverArt 
-        ? `https://uploads.mangadex.org/covers/${manga.id}/${coverArt.attributes.fileName}`
-        : '/placeholder-manga.jpg';
-      
-      const title = manga.attributes.title.en || 
-                   manga.attributes.title.ja || 
-                   manga.attributes.title['ja-ro'] ||
-                   Object.values(manga.attributes.title)[0] as string || 
-                   'Unknown Title';
-      
-      const description = manga.attributes.description.en || 
-                         manga.attributes.description.ja || 
-                         Object.values(manga.attributes.description)[0] as string || 
-                         'No description available';
-      
-      // Generate a realistic rating based on followed count
-      const followedCount = manga.attributes.followedCount || 0;
-      const rating = Math.min(10, 6 + (followedCount / 10000) * 4);
-      
-      return {
-        id: manga.id,
-        title: title,
-        titlebn: title, // You may want to add translation later
-        description: description.slice(0, 200) + '...',
-        descriptionbn: description.slice(0, 200) + '...', // You may want to add translation later
-        cover: coverUrl,
-        year: new Date(
-          manga.attributes.year ? manga.attributes.year :
-          manga.attributes.publicationDate ? manga.attributes.publicationDate :
-          Date.now()
-        ).getFullYear(),
-        author: author?.attributes?.name || 'Unknown Author',
-        publisher: manga.attributes.publicationDemographic || 'Unknown', 
-        publicationDate: manga.attributes.year ? new Date(manga.attributes.year, 0, 1).toISOString() : new Date().toISOString(),
-        genres: manga.attributes.tags
-          .filter((tag: any) => tag.attributes.group === 'genre')
-          .map((tag: any) => tag.attributes.name.en),
-        tags: manga.attributes.tags
-          .filter((tag: any) => tag.attributes.group === 'theme')
-          .map((tag: any) => tag.attributes.name.en),
-        rating: Math.round(rating * 10) / 10,
-        status: manga.attributes.status,
-        volumes: manga.attributes.lastVolume || 0,
-        chapters: Array.from({ length: manga.attributes.lastChapter || 0 }, (_, i) => ({
-          id: `${i + 1}`,
-          mangaId: manga.id,
-          number: i + 1,
-          title: `Chapter ${i + 1}`,
-          titlebn: `অধ্যায় ${i + 1}`,
-          publishDate: new Date().toISOString(),
-          pages: []
-        }))
-      } as Manga;
-    });
-  } catch (error) {
-    console.error('Error fetching from MangaDex:', error);
-    return [];
-  }
+const localMangas: CatalogManga[] = [
+  ...pdfMangas.map(manga => ({
+    ...manga,
+    image: manga.cover,
+    publisher: 'Unknown',
+    genres: manga.genre.split(', '),
+    tags: [],
+    status: 'completed' as const,
+    volumes: 0,
+    chapters: [],
+    publicationDate: new Date(manga.year, 0, 1),
+    readUrl: manga.pdfPath,
+  })),
+  ...mockMangas,
+];
+
+const mangaDexList = import.meta.env.DEV
+  ? '/mangadex-api/manga'
+  : 'https://api.mangadex.org/manga';
+
+async function fetchMangaDexData(signal: AbortSignal): Promise<CatalogManga[]> {
+  const params = new URLSearchParams([
+    ['limit', '100'],
+    ['includes[]', 'cover_art'],
+    ['includes[]', 'author'],
+    ['contentRating[]', 'safe'],
+    ['contentRating[]', 'suggestive'],
+    ['order[followedCount]', 'desc'],
+    ['hasAvailableChapters', 'true'],
+  ]);
+  const response = await fetch(`${mangaDexList}?${params}`, { signal });
+  if (!response.ok) throw new Error(`MangaDex returned HTTP ${response.status}`);
+
+  const { data } = await response.json();
+  return data.map((manga: any): CatalogManga => {
+    const { attributes, relationships } = manga;
+    const coverFile = relationships.find((entry: any) => entry.type === 'cover_art')?.attributes?.fileName;
+    const author = relationships.find((entry: any) => entry.type === 'author')?.attributes?.name;
+    const title = attributes.title.en || attributes.title['ja-ro'] || attributes.title.ja ||
+      String(Object.values(attributes.title)[0] || 'Unknown Title');
+    const description = attributes.description?.en || attributes.description?.ja ||
+      String(Object.values(attributes.description ?? {})[0] || 'No description available');
+    const cover = coverFile
+      ? `https://uploads.mangadex.org/covers/${manga.id}/${coverFile}.256.jpg`
+      : localImageFallback;
+    const year = attributes.year ?? 0;
+    const tags = attributes.tags ?? [];
+    const followedCount = attributes.followedCount ?? 0;
+    const rating = Math.min(10, Math.round((6 + followedCount / 2500) * 10) / 10);
+    const chapterCount = Number(attributes.lastChapter) || 0;
+
+    return {
+      id: manga.id,
+      title,
+      titlebn: title,
+      description,
+      descriptionbn: description,
+      cover,
+      image: cover,
+      year,
+      author: author || 'Unknown Author',
+      publisher: attributes.publicationDemographic || 'Unknown',
+      publicationDate: year ? new Date(year, 0, 1) : new Date(0),
+      genres: tags.filter((tag: any) => tag.attributes.group === 'genre').map((tag: any) => tag.attributes.name.en),
+      tags: tags.filter((tag: any) => tag.attributes.group === 'theme').map((tag: any) => tag.attributes.name.en),
+      rating,
+      status: attributes.status,
+      volumes: Number(attributes.lastVolume) || 0,
+      chapters: [],
+      chapterCount,
+      readUrl: `https://mangadex.org/title/${manga.id}`,
+    };
+  });
+}
+
+function getChapterCount(manga: CatalogManga) {
+  return manga.chapterCount ?? manga.chapters.length;
+}
+
+function MangaReadButton({ manga, children, ...props }: React.ComponentProps<typeof Button> & { manga: CatalogManga }) {
+  return (
+    <Button {...props} asChild>
+      {manga.readUrl
+        ? <a href={manga.readUrl} target="_blank" rel="noreferrer">{children}</a>
+        : <Link to={`/manga/${manga.id}`}>{children}</Link>}
+    </Button>
+  );
 }
 
 export default function MangaPage() {
-  const [mangas, setMangas] = useState<Manga[]>([]);
+  const [mangas, setMangas] = useState<CatalogManga[]>(localMangas);
   const [isLoading, setIsLoading] = useState(true);
-  const [apiError, setApiError] = useState(false);
+  const [usingLocalCatalog, setUsingLocalCatalog] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('rating');
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
@@ -100,31 +116,34 @@ export default function MangaPage() {
   const [volumeRange, setVolumeRange] = useState<[number, number]>([0, 200]);
   const [chapterRange, setChapterRange] = useState<[number, number]>([0, 1500]);
   const [ratingRange, setRatingRange] = useState<[number, number]>([0, 10]);
-  const [yearRange, setYearRange] = useState<[number, number]>([1950, 2024]);
+  const [yearRange, setYearRange] = useState<[number, number]>([1950, latestMangaYear]);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [language] = useState<'en' | 'bn'>('en');
 
-  // Fetch data from MangaDex on component mount
   useEffect(() => {
-    const loadMangaData = async () => {
-      setIsLoading(true);
-      try {
-        const mangaDexData = await fetchMangaDexData(100, 0);
-        if (mangaDexData.length > 0) {
-          setMangas(mangaDexData);
-          setApiError(false);
-        } else {
-          setApiError(true);
-        }
-      } catch (error) {
-        console.error('Failed to load manga data:', error);
-        setApiError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000);
+    let active = true;
 
-    loadMangaData();
+    fetchMangaDexData(controller.signal)
+      .then(data => {
+        if (!active) return;
+        setMangas(data.length ? data : localMangas);
+        setUsingLocalCatalog(data.length === 0);
+      })
+      .catch(() => {
+        if (active) setUsingLocalCatalog(true);
+      })
+      .finally(() => {
+        clearTimeout(timeout);
+        if (active) setIsLoading(false);
+      });
+
+    return () => {
+      active = false;
+      clearTimeout(timeout);
+      controller.abort();
+    };
   }, []);
 
   const allGenres = useMemo(() => 
@@ -179,12 +198,12 @@ export default function MangaPage() {
       
       const matchesVolumeRange = manga.volumes >= volumeRange[0] && manga.volumes <= volumeRange[1];
       
-      const matchesChapterRange = manga.chapters.length >= chapterRange[0] && manga.chapters.length <= chapterRange[1];
+      const matchesChapterRange = getChapterCount(manga) >= chapterRange[0] && getChapterCount(manga) <= chapterRange[1];
       
       const matchesRating = manga.rating >= ratingRange[0] && manga.rating <= ratingRange[1];
       
-      const mangaYear = new Date(manga.publicationDate).getFullYear();
-      const matchesYear = mangaYear >= yearRange[0] && mangaYear <= yearRange[1];
+      const mangaYear = manga.year;
+      const matchesYear = !mangaYear || (mangaYear >= yearRange[0] && mangaYear <= yearRange[1]);
       
       return matchesGenres && matchesCategories && matchesAuthors && matchesPublishers && 
              matchesStatus && matchesVolumeRange && matchesChapterRange && matchesRating && matchesYear;
@@ -204,7 +223,7 @@ export default function MangaPage() {
         case 'recently-added':
           return new Date(b.publicationDate).getTime() - new Date(a.publicationDate).getTime();
         case 'chapters':
-          return b.chapters.length - a.chapters.length;
+          return getChapterCount(b) - getChapterCount(a);
         default:
           return 0;
       }
@@ -221,26 +240,24 @@ export default function MangaPage() {
     setVolumeRange([0, 200]);
     setChapterRange([0, 1500]);
     setRatingRange([0, 10]);
-    setYearRange([1950, 2024]);
+    setYearRange([1950, latestMangaYear]);
     setSearchQuery('');
   };
 
-  const MangaCard = ({ manga }: { manga: Manga }) => (
+  const MangaCard = ({ manga }: { manga: CatalogManga }) => (
     <Card className="card-hover overflow-hidden">
       <div className="relative">
         <img 
           src={manga.cover} 
           alt={manga.title}
           className="w-full h-64 object-cover"
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = '/placeholder-manga.jpg';
-          }}
+          onError={showLocalImageFallback}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         <div className="absolute bottom-4 left-4 right-4">
           <div className="flex items-center space-x-2 mb-2">
             <Badge variant="secondary" className="bg-black/50 text-white">
-              {new Date(manga.publicationDate).getFullYear()}
+              {manga.year || '—'}
             </Badge>
             <Badge 
               variant={manga.status === 'completed' ? 'secondary' : 
@@ -285,20 +302,18 @@ export default function MangaPage() {
         </div>
         <div className="flex items-center justify-between">
           <span className="text-sm text-muted-foreground">
-            {manga.chapters.length} {language === 'bn' ? 'অধ্যায়' : 'Chapters'}
+            {getChapterCount(manga)} {language === 'bn' ? 'অধ্যায়' : 'Chapters'}
           </span>
-          <Link to={`/manga/${manga.id}`}>
-            <Button className="btn-manga">
-              <Book className="w-4 h-4 mr-2" />
-              {language === 'bn' ? 'পড়ুন' : 'Read'}
-            </Button>
-          </Link>
+          <MangaReadButton manga={manga} className="btn-manga">
+            <Book className="w-4 h-4 mr-2" />
+            {language === 'bn' ? 'পড়ুন' : 'Read'}
+          </MangaReadButton>
         </div>
       </CardContent>
     </Card>
   );
 
-  const MangaListItem = ({ manga }: { manga: Manga }) => (
+  const MangaListItem = ({ manga }: { manga: CatalogManga }) => (
     <Card className="card-hover">
       <CardContent className="p-4">
         <div className="flex space-x-4">
@@ -306,9 +321,7 @@ export default function MangaPage() {
             src={manga.cover} 
             alt={manga.title}
             className="w-24 h-32 object-cover rounded-lg"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = '/placeholder-manga.jpg';
-            }}
+            onError={showLocalImageFallback}
           />
           <div className="flex-1">
             <div className="flex items-start justify-between">
@@ -336,16 +349,14 @@ export default function MangaPage() {
             
             <div className="flex items-center justify-between mt-4">
               <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-                <span>{new Date(manga.publicationDate).getFullYear()}</span>
-                <span>{manga.chapters.length} {language === 'bn' ? 'অধ্যায়' : 'Chapters'}</span>
+                <span>{manga.year || '—'}</span>
+                <span>{getChapterCount(manga)} {language === 'bn' ? 'অধ্যায়' : 'Chapters'}</span>
                 <span>{manga.volumes} {language === 'bn' ? 'খণ্ড' : 'Volumes'}</span>
               </div>
-              <Link to={`/manga/${manga.id}`}>
-                <Button className="btn-manga">
-                  <Book className="w-4 h-4 mr-2" />
-                  {language === 'bn' ? 'পড়ুন' : 'Read'}
-                </Button>
-              </Link>
+              <MangaReadButton manga={manga} className="btn-manga">
+                <Book className="w-4 h-4 mr-2" />
+                {language === 'bn' ? 'পড়ুন' : 'Read'}
+              </MangaReadButton>
             </div>
           </div>
         </div>
@@ -367,11 +378,11 @@ export default function MangaPage() {
               : 'Discover, read, and build your reading list with your favorite manga. Featuring semantic search and AI recommendations.'
             }
           </p>
-          {apiError && (
-            <p className="text-sm text-red-600 mt-2">
+          {usingLocalCatalog && (
+            <p className="text-sm text-muted-foreground mt-2" role="status">
               {language === 'bn' 
-                ? 'ডেটা লোড করতে সমস্যা হয়েছে। পরে আবার চেষ্টা করুন।'
-                : 'Failed to load data. Please try again later.'
+                ? 'লাইভ ক্যাটালগ পাওয়া যাচ্ছে না। সংরক্ষিত সংগ্রহ দেখানো হচ্ছে।'
+                : 'The live catalog is unavailable. Showing the local collection.'
               }
             </p>
           )}
@@ -433,7 +444,7 @@ export default function MangaPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {mangas
+              {[...mangas]
                 .sort((a, b) => b.rating - a.rating)
                 .slice(0, 8)
                 .map((manga) => (
@@ -443,9 +454,7 @@ export default function MangaPage() {
                         src={manga.cover} 
                         alt={manga.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src = '/placeholder-manga.jpg';
-                        }}
+                        onError={showLocalImageFallback}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       
@@ -480,12 +489,10 @@ export default function MangaPage() {
                             </Badge>
                           ))}
                         </div>
-                        <Link to={`/manga/${manga.id}`}>
-                          <Button size="sm" className="w-full">
-                            <Book className="w-4 h-4 mr-2" />
-                            {language === 'bn' ? 'পড়ুন' : 'Read Now'}
-                          </Button>
-                        </Link>
+                        <MangaReadButton manga={manga} size="sm" className="w-full">
+                          <Book className="w-4 h-4 mr-2" />
+                          {language === 'bn' ? 'পড়ুন' : 'Read Now'}
+                        </MangaReadButton>
                       </div>
                     </div>
 
@@ -495,11 +502,11 @@ export default function MangaPage() {
                           {language === 'bn' ? manga.titlebn : manga.title}
                         </h3>
                         <p className="text-sm text-muted-foreground line-clamp-1">
-                          {manga.author} • {new Date(manga.publicationDate).getFullYear()}
+                          {manga.author} • {manga.year || '—'}
                         </p>
                         <div className="flex items-center justify-between text-sm">
                           <span className="text-muted-foreground">
-                            {manga.chapters.length} {language === 'bn' ? 'অধ্যায়' : 'chapters'}
+                            {getChapterCount(manga)} {language === 'bn' ? 'অধ্যায়' : 'chapters'}
                           </span>
                           <Badge 
                             variant={manga.status === 'completed' ? 'secondary' : 
@@ -564,15 +571,9 @@ export default function MangaPage() {
                 {language === 'bn' ? 'কোন মাঙ্গা পাওয়া যায়নি' : 'No manga found'}
               </h3>
               <p className="text-muted-foreground">
-                {apiError ? (
-                  language === 'bn' 
-                    ? 'API থেকে ডেটা লোড করতে ব্যর্থ। পরে আবার চেষ্টা করুন।'
-                    : 'Failed to load data from API. Please try again later.'
-                ) : (
-                  language === 'bn' 
-                    ? 'আপনার অনুসন্ধানের শর্ত পরিবর্তন করে আবার চেষ্টা করুন।'
-                    : 'Try changing your search criteria and try again.'
-                )}
+                {language === 'bn'
+                  ? 'আপনার অনুসন্ধানের শর্ত পরিবর্তন করে আবার চেষ্টা করুন।'
+                  : 'Try adjusting your search or filters.'}
               </p>
             </div>
           ) : (
